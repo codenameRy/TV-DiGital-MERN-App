@@ -14,7 +14,7 @@
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
   "author": "Ryan Lee",
-  "license": "Corp",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
