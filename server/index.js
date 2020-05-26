@@ -24,10 +24,7 @@ const connect = mongoose.connect(config.mongoURI,
   .catch(err => console.log(err));
 
 app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000", "https://quiet-forest-60957.herokuapp.com/ "] //Swap this with the client url 
-  })
+  cors()
   )
 
 //to not get any deprecation warning or error
