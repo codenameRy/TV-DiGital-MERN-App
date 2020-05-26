@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 const cors = require("cors");
+const path = require("path")
 
 const mongoose = require("mongoose");
 console.log(config.mongoURI, "hello mongo")
