@@ -20,10 +20,15 @@ const connect = mongoose.connect(config.mongoURI,
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
   })
-  .then(() => console.log('MongoDB Connected...'))
+  .then(() => console.log('MongoDB Connected to Atlas...'))
   .catch(err => console.log(err));
 
-app.use(cors())
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000", "https://distracted-noyce-fee0e2.netlify.com"] //Swap this with the client url 
+  })
+  )
 
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
