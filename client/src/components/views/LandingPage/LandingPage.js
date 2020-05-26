@@ -23,22 +23,35 @@ class LandingPage extends Component {
         tvShows: [],
         tvMainHeaderImage: [],
         tvLoading: [],
-        tvCurrentPage: 0
+        tvCurrentPage: 0,
     }
     componentDidMount() {
         console.log(
             'component did mount'
         )
-        Axios.get(BaseURL+EndPoint)
-          .then(response => {
-            console.log(response)  
-            this.setState({
-                tvShows: response.data.results
-                // tvResults: response.data.results
-            })
-          })
+        let newEndPoint = BaseURL+EndPoint
+        this.retrieveShows(newEndPoint)
+    }
+    
+    // API call to retrieve TV show data
+    retrieveShows = (path) => {     
+         Axios.get(path)
+         .then(response => {
+           console.log(response)  
+           this.setState({
+               tvShows: response.data.results,
+               tvCurrentPage: response.data.page
+           })
+         })
     }
 
+    handleClick = () => {
+        let midPoint = 'tv/popular?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US&page=';
+        let newEndPoint = `${BaseURL}${midPoint}${this.state.tvCurrentPage + 1}`;
+        console.log(newEndPoint)
+        
+        this.retrieveShows(newEndPoint)
+    }
     
     render() {
     return (
@@ -80,7 +93,7 @@ class LandingPage extends Component {
         {/* Load More Button */}
         <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button onClick>Load More</button>
+                    <button onClick={this.handleClick}>Load More</button>
                 </div>
         
         </div>
