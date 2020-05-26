@@ -18,8 +18,8 @@ app.use(
     credentials: true,
     origin: [
       "http://localhost:3000",
-      "https://quiet-forest-60957.herokuapp.com/",
-    ], //Swap this with the client url
+      "https://tv-digital.netlify.app",
+    ], //Swap this with the client url - Change to netlify in future
   })
 );
 
