@@ -6,6 +6,7 @@ const config = require("./config/key");
 const cors = require("cors");
 
 const mongoose = require("mongoose");
+console.log(config.mongoURI, "hello mongo")
 const connect = mongoose
   .connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB Connected to Atlas..."))
