@@ -2,9 +2,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
     app.use(
-        '/api',
+        'https://quiet-forest-60957.herokuapp.com/api',
         createProxyMiddleware({
-            target: 'https://quiet-forest-60957.herokuapp.com',
+            target: 'http://localhost:5000',
             changeOrigin: true,
         })
     );
