@@ -1,5 +1,8 @@
 //SERVER ROUTES
-export const USER_SERVER = '/api/users';
+console.log(process.env.NODE_ENV)
+
+export const USER_SERVER = process.env.NODE_ENV === "development" ?
+"api/users":'https://quiet-forest-60957.herokuapp.com/api/users';
 
 export const API_KEY = 'a0265ab770ca0c045998969cf812d64f';
 export const API_URL = 'https://api.themoviedb.org/3/';
