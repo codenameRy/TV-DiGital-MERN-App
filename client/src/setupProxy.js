@@ -6,7 +6,7 @@ module.exports = function (app) {
         // 'https://quiet-forest-60957.herokuapp.com/api',
         createProxyMiddleware({
             // target: 'http://localhost:5000',
-            target: 'https://quiet-forest-60957.herokuapp.com/',
+            target: 'quiet-forest-60957.herokuapp.com',
             changeOrigin: true,
         })
     );
