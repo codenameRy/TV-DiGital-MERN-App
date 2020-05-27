@@ -55,7 +55,7 @@ class TVShowDetails extends Component {
 
         {/* Body */}
         <div style={{ width: "85%", margin: "1rem auto" }}>
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <Button>Add to Favorite List</Button>
           </div>
 
@@ -67,10 +67,15 @@ class TVShowDetails extends Component {
         <Descriptions.Item label='Title'>{this.state.tvShows.name}</Descriptions.Item>
         <Descriptions.Item label='First Air Date'>{this.state.tvShows.first_air_date}</Descriptions.Item>
         <Descriptions.Item label='TV Show Website'>{this.state.tvShows.homepage}</Descriptions.Item>
-        <Descriptions.Item label='vote_average'>{this.state.tvShows.vote_average}</Descriptions.Item>
-        <Descriptions.Item label='vote_count'>{this.state.tvShows.vote_count}</Descriptions.Item>
-        <Descriptions.Item label='status'>{this.state.tvShows.status}</Descriptions.Item>
-        <Descriptions.Item label='popularity'>{this.state.tvShows.popularity}</Descriptions.Item>
+        <Descriptions.Item label='Average Rating'>{this.state.tvShows.vote_average}</Descriptions.Item>
+        <Descriptions.Item label='Vote Count'>{this.state.tvShows.vote_count}</Descriptions.Item>
+        <Descriptions.Item label='Status'>{this.state.tvShows.status}</Descriptions.Item>
+        <Descriptions.Item label='Popularity'>{this.state.tvShows.popularity}</Descriptions.Item>
+        <Descriptions.Item label='Genres'>
+            {this.state.tvShows.genres && this.state.tvShows.genres.map((type, index) => (
+              <li key={index.id}>{type.genres}</li>
+            ))}
+        </Descriptions.Item>
       </Descriptions>
 
       <div style={{ display: "flex", justifyContent: "center" }}>

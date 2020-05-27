@@ -6,8 +6,9 @@ import HomePage from "./views/HomePage/HomePage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
-import Footer from "./views/Footer/Footer"
-import TVShowDetails from "./views/TVShowDetails/TVShowDetails"
+import Footer from "./views/Footer/Footer";
+import TVShowDetails from "./views/TVShowDetails/TVShowDetails";
+import FavoriteShows from "./views/FavoriteShows/FavoriteShows"
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/tv/:tvShowID" component={Auth(TVShowDetails, null)} />
+          <Route exact path="/favoriteshows" component={Auth(FavoriteShows,true)} />
         </Switch>
       </div>
       <Footer />
