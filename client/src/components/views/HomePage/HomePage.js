@@ -10,7 +10,7 @@ const { Title } = Typography;
 //URL Variables
 let BaseURL = "https://api.themoviedb.org/3/";
 let EndPoint = "tv/popular?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US&page=1";
-let ImageURL = "http://image.tmdb.org/t/p/";
+let ImageURL = "https://image.tmdb.org/t/p/";
 
 //Image Style Variables
 let mainImageSize = "w1280";
