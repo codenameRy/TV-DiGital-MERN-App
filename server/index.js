@@ -9,7 +9,9 @@ const path = require("path")
 const mongoose = require("mongoose");
 console.log(config.mongoURI, "hello mongo")
 const connect = mongoose
-  .connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(config.mongoURI, { 
+    useNewUrlParser: true, useUnifiedTopology: true,
+    useCreateIndex: true, useFindAndModify: false })
   .then(() => console.log("MongoDB Connected to Atlas..."))
   .catch((err) => console.log(err));
 
