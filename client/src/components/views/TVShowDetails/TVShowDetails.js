@@ -8,6 +8,7 @@ import { Descriptions, Button, Row } from "antd";
 let ImageURL = `http://image.tmdb.org/t/p/`;
 //Image Style Variables
 let mainImageSize = "w1280";
+let castImageSize = "w200";
 
 class TVShowDetails extends Component {
   state = {
@@ -82,12 +83,10 @@ class TVShowDetails extends Component {
               this.state.tvShowCast.map((cast, index) => (
                 <React.Fragment key={index}>
                   <GridDesignShows
-                    actor
-                    image = {cast.profile_path}
-                    // image={
-                    //   cast.poster_path &&
-                    //   `${ImageURL}${gridImageSize}${cast.poster_path}`}
-                    // tvShowID={cast.id}
+                    actor 
+                    image={
+                      `${ImageURL}${castImageSize}${cast.profile_path}`}
+                      character={cast.character}
                   />
                 </React.Fragment>
               ))}

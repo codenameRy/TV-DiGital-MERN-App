@@ -11,8 +11,9 @@ class GridDesign extends Component {
                     </a>
                 </div>
             </Col>
-        );
+        )
     }
+    
 }
 
 export default GridDesign;
