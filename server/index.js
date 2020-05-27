@@ -21,6 +21,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://tv-digital.netlify.app",
+      "http://tv-digital.netlify.app",
     ], //Swap this with the client url - Change to netlify in future
   })
 );
