@@ -30,8 +30,8 @@ class HomePage extends Component {
   }
 
   // API call to retrieve TV show data by popularity
-  retrieveShows = (path) => {
-    Axios.get(path).then((response) => {
+  retrieveShows = async (path) => {
+    await Axios.get(path).then((response) => {
       console.log(response);
       this.setState({
         tvShows: [...this.state.tvShows, ...response.data.results],

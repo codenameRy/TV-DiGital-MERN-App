@@ -16,11 +16,11 @@ class TVShowDetails extends Component {
     tvShowCast: []
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log("component did mount - TV Show Details Page");
     let tvShowID = this.props.match.params.tvShowID;
     
-    Axios.get(
+    await Axios.get(
       `https://api.themoviedb.org/3/tv/${tvShowID}?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`
     ).then((response) => {
       console.log(response);
@@ -28,7 +28,7 @@ class TVShowDetails extends Component {
         tvShows: response.data,
       });
     });
-    Axios.get(
+    await Axios.get(
         `https://api.themoviedb.org/3/tv/${tvShowID}/credits?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`
         ).then((response) => {
             console.log(response)
@@ -36,7 +36,25 @@ class TVShowDetails extends Component {
             tvShowCast: response.data.cast
         })
         });
-  }
+      }
+        //B - Sending message to server using Axios post Request
+        sendMessageToServer = async () => {
+        
+      let res = await Axios.post('http://localhost:5000/tvShows', this.state) //Post movie details to the server 
+      
+      console.log(res) //show the message 8 
+      let newMovies = [...this.state.movies]
+      newMovies.push({title:this.state.title, director:this.state.director, stars:this.state.stars, 
+          image:this.state.image, description:this.state.description})
+  
+      this.setState({ //9 
+        message:res.data.message,
+        newMovieID: res.data.newMovieID,
+        movies: newMovies,
+        newMessage: 'New Movie Loaded!'
+      })
+    }
+  
 
   render() {
     return (
@@ -56,7 +74,7 @@ class TVShowDetails extends Component {
         {/* Body */}
         <div style={{ width: "85%", margin: "1rem auto" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <Button>Add to Favorite List</Button>
+            <Button onClick={this.sendMessageToServer}>Add to Favorite List</Button>
           </div>
 
             {/* TV Show Details */}
