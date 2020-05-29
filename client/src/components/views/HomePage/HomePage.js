@@ -74,13 +74,13 @@ class HomePage extends Component {
             {this.state.tvShows &&
               this.state.tvShows.map((tvShows, index) => (
                 <React.Fragment key={index}>
+                {tvShows.poster_path &&
                   <GridDesign
-                    image={
-                      tvShows.poster_path &&
-                      `${ImageURL}${gridImageSize}${tvShows.poster_path}`
+                    image={`${ImageURL}${gridImageSize}${tvShows.poster_path}`
                     }
                     tvShowID={tvShows.id}
                   />
+                  }
                 </React.Fragment>
               ))}
           </Row>
