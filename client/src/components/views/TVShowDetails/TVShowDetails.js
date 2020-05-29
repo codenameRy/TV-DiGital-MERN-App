@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 import MainHeaderImage from "../HomePage/MainHeaderImage";
 import GridDesignShows from './GridDesignShows';
+import FavoriteShows from '../FavoriteShows/FavoriteShows'
 import { Descriptions, Button, Row } from "antd";
 
 //URL Variables
@@ -13,13 +14,14 @@ let castImageSize = "w200";
 
 function TVShowDetails(props) {
   // const dispatch = useDispatch();
+  let tvShowID = props.match.params.tvShowID;
   const [tvShows, setTvShows] = useState([])
   const [tvShowCast, setTvShowCast] = useState([])
   const [ActorClick, setActorClick] = useState(false)
 
   useEffect( () => {
     console.log("component did mount - TV Show Details Page");
-    let tvShowID = props.match.params.tvShowID;
+    
 
     Axios.get(
       `https://api.themoviedb.org/3/tv/${tvShowID}?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`
@@ -35,23 +37,7 @@ function TVShowDetails(props) {
         setTvShowCast( response.data.cast)
     });
   },[]);
-        //B - Sending message to server using Axios post Request
-    //     const sendMessageToServer = async () => {
-        
-    //   let res = await Axios.post('http://localhost:5000/tvShows', this.state) //Post movie details to the server 
-      
-    //   console.log(res) //show the message 8 
-    //   let newMovies = [...this.state.movies]
-    //   newMovies.push({title:this.state.title, director:this.state.director, stars:this.state.stars, 
-    //       image:this.state.image, description:this.state.description})
   
-    //   this.setState({ //9 
-    //     message:res.data.message,
-    //     newMovieID: res.data.newMovieID,
-    //     movies: newMovies,
-    //     newMessage: 'New Movie Loaded!'
-    //   })
-    // }
   
   const handleActorClick = () => {
     setActorClick(!ActorClick)
@@ -75,7 +61,7 @@ function TVShowDetails(props) {
         {/* Body */}
         <div style={{ width: "85%", margin: "1rem auto" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            {/* <Button onClick={this.sendMessageToServer}>Add to Favorite List</Button> */}
+            <FavoriteShows userFrom={localStorage.getItem('userId')} />
           </div>
 
             {/* TV Show Details */}
@@ -92,7 +78,7 @@ function TVShowDetails(props) {
         <Descriptions.Item label='Popularity'>{tvShows.popularity}</Descriptions.Item>
         <Descriptions.Item label='Genres'>
             {tvShows.genres && tvShows.genres.map((type, index) => (
-              <li key={index.id}>{type.genres}</li>
+              <li key={index}>{type.genres}</li>
             ))}
         </Descriptions.Item>
       </Descriptions>
