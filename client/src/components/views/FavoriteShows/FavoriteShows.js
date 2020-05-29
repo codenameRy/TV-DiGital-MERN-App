@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 // import { Button } from 'antd';
 import {Col} from 'antd';
+import { Link } from 'react-router-dom'
 
 // import { useSelector } from 'react-redux';
 
@@ -99,12 +100,20 @@ function FavoriteShows(props) {
             <Col lg={6} md={8} sm={16} xs={24}>
                  <div style={{ position: 'relative' }}>
                     
-                        <img style={{ width: '258px', height: '320px' }} alt={'temp'} src="https://image.tmdb.org/t/p/w500/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg"/>
+                        <Link to="/tv/60735"><img style={{ width: '258px', height: '320px' }} alt={'temp'} src="https://image.tmdb.org/t/p/w500/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg"/>
+                        </Link>
+                        <Link to="/tv/1668">
                         <img style={{ width: '258px', height: '320px' }} alt={'temp'} src="https://image.tmdb.org/t/p/w500/f496cm9enuEsZkSPzCwnTESEK5s.jpg"/>
+                        </Link>
+                        <Link to="/tv/1399">
                         <img style={{ width: '258px', height: '320px' }} alt={'temp'} src="https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg"/>
+                        </Link>
+                        <Link to="/tv/63247">
                         <img style={{ width: '258px', height: '320px' }} alt={'temp'} src="https://image.tmdb.org/t/p/w500/y55oBgf6bVMI7sFNXwJDrSIxPQt.jpg"/>
+                        </Link>
+                        <Link to="/tv/2190">
                         <img style={{ width: '258px', height: '320px' }} alt={'temp'} src="https://image.tmdb.org/t/p/w500/9BvRze9keEyTzB6ewmDvjzFGYuG.jpg"/>
-                    
+                        </Link>
                 </div>
             </Col>
 

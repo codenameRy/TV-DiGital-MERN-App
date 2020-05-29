@@ -61,7 +61,7 @@ function TVShowDetails(props) {
         {/* Body */}
         <div style={{ width: "85%", margin: "1rem auto" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <FavoriteShows userFrom={localStorage.getItem('userId')} />
+            {/* <FavoriteShows userFrom={localStorage.getItem('userId')} /> */}
           </div>
 
             {/* TV Show Details */}
