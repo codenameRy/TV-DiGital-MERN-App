@@ -4,7 +4,7 @@ import Axios from "axios";
 import MainHeaderImage from "../HomePage/MainHeaderImage";
 import GridDesignShows from './GridDesignShows';
 import FavoriteShows from '../FavoriteShows/FavoriteShows'
-import { Descriptions, Button, Row } from "antd";
+import { Descriptions, Button, Row, Anchor } from "antd";
 
 //URL Variables
 let ImageURL = `https://image.tmdb.org/t/p/`;
@@ -71,16 +71,18 @@ function TVShowDetails(props) {
             >
         <Descriptions.Item label='Title'>{tvShows.name}</Descriptions.Item>
         <Descriptions.Item label='First Air Date'>{tvShows.first_air_date}</Descriptions.Item>
-        <Descriptions.Item label='TV Show Website'>{tvShows.homepage}</Descriptions.Item>
+        <Descriptions.Item label='TV Show Website'>
+        <a href={tvShows.homepage} target="_blank" rel="noopener noreferrer">{tvShows.homepage}</a>
+        </Descriptions.Item>
         <Descriptions.Item label='Average Rating'>{tvShows.vote_average}</Descriptions.Item>
         <Descriptions.Item label='Vote Count'>{tvShows.vote_count}</Descriptions.Item>
         <Descriptions.Item label='Status'>{tvShows.status}</Descriptions.Item>
         <Descriptions.Item label='Popularity'>{tvShows.popularity}</Descriptions.Item>
-        <Descriptions.Item label='Genres'>
+        {/* <Descriptions.Item label='Genres'>
             {tvShows.genres && tvShows.genres.map((type, index) => (
               <li key={index}>{type.genres}</li>
             ))}
-        </Descriptions.Item>
+        </Descriptions.Item> */}
       </Descriptions>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
