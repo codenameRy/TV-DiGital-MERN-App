@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
+
 // pages for this product
 import HomePage from "./views/HomePage/HomePage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
@@ -8,7 +9,8 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import TVShowDetails from "./views/TVShowDetails/TVShowDetails";
-import FavoriteShows from "./views/FavoriteShows/FavoriteShows"
+import FavoriteShows from "./views/FavoriteShows/FavoriteShows";
+require('dotenv').config();
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside

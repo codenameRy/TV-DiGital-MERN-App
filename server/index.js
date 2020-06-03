@@ -1,10 +1,13 @@
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 const cors = require("cors");
-const path = require("path")
+const path = require("path");
+const logger = require("morgan");
 
 const mongoose = require("mongoose");
 console.log(config.mongoURI, "hello mongo")
@@ -29,6 +32,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(logger('dev'));
 
 app.use("/api/users", require("./routes/users"));
 app.use("/api/favoriteshows", require("./routes/favorite"));

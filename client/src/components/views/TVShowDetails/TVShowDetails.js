@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 import MainHeaderImage from "../HomePage/MainHeaderImage";
 import GridDesignShows from './GridDesignShows';
-import FavoriteShows from '../FavoriteShows/FavoriteShows'
+// import FavoriteShows from '../FavoriteShows/FavoriteShows'
 import { Descriptions, Button, Row, Anchor } from "antd";
 
 //URL Variables
@@ -14,28 +14,20 @@ let castImageSize = "w200";
 
 function TVShowDetails(props) {
   // const dispatch = useDispatch();
-  let tvShowID = props.match.params.tvShowID;
+  const tvShowID = props.match.params.tvShowID;
   const [tvShows, setTvShows] = useState([])
   const [tvShowCast, setTvShowCast] = useState([])
   const [ActorClick, setActorClick] = useState(false)
+  const [LoadingForTV, setLoadingForTV] = useState(true)
+  const [LoadingForCasts, setLoadingForCasts] = useState(true)
 
   useEffect( () => {
     console.log("component did mount - TV Show Details Page");
     
+    let endpointForTVDetail = `https://api.themoviedb.org/3/tv/${tvShowID}?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`;
+    fetchDetailInfo(endpointForTVDetail)
 
-    Axios.get(
-      `https://api.themoviedb.org/3/tv/${tvShowID}?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`
-    ).then((response) => {
-      console.log(response);
-      setTvShows(response.data)
-    });
-    Axios.get(
-      `https://api.themoviedb.org/3/tv/${tvShowID}/credits?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`
-    ).then((response) => {
-      console.log(response);
-      
-        setTvShowCast( response.data.cast)
-    });
+    
   },[]);
   
   
@@ -43,6 +35,23 @@ function TVShowDetails(props) {
     setActorClick(!ActorClick)
   }
 
+  const fetchDetailInfo = (endpointForTVDetail) => {
+    Axios.get(endpointForTVDetail)
+      .then(response => {
+        console.log(response);
+        setTvShows(response.data)
+        setLoadingForTV(false)
+
+        Axios.get(
+          `https://api.themoviedb.org/3/tv/${tvShowID}/credits?api_key=a0265ab770ca0c045998969cf812d64f&language=en-US`
+        ).then(response => {
+          console.log(response);
+            setTvShowCast( response.data.cast)
+        });
+        setLoadingForCasts(false)
+      });
+      
+  }
  
     return (
       <div>
