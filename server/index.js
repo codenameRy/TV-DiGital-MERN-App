@@ -21,12 +21,11 @@ const connect = mongoose
 app.use(
   cors({
     credentials: true,
-    origin: true
-    // [
-    //   "http://localhost:3000",
-    //   "https://tv-digital.netlify.app/*",
-    //   "http://tv-digital.netlify.app",
-    // ], //Swap this with the client url - Change to netlify in future
+    origin: [
+      "http://localhost:3000",
+      "https://tv-digital.netlify.app/*",
+      "http://tv-digital.netlify.app",
+    ], //Swap this with the client url - Change to netlify in future
 
     //remove array and set to true - Alternative
   })
